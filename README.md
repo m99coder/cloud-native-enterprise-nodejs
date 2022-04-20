@@ -6,11 +6,13 @@
 
 ## Keyboard Shortcuts
 
-- `⇧⌘M`: Problems panel
-- `⌘.`: Quick fix menu
-- `F5`: Start debugger (when source file is selected)
-- `⇧⌘D`: Debug view
-- `⇧⌘B`: Run build task (default task is defined in `.vscode/tasks.json`)
+|Shortcut|Functionality|
+|---|---|
+|`⇧⌘M`|Problems panel|
+|`⌘.`|Quick fix menu|
+|`F5`|Start debugger (when source file is selected and a launch configuration is present)|
+|`⇧⌘D`|Debug view|
+|`⇧⌘B`|Run build task (default task is defined in `.vscode/tasks.json`)|
 
 ## Useful Settings
 

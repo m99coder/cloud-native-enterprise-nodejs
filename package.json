@@ -1,0 +1,26 @@
+{
+  "name": "typescript-vscode",
+  "version": "0.1.0",
+  "description": "TypeScript in Visual Studio Code",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/m99coder/typescript-vscode.git"
+  },
+  "keywords": [],
+  "author": "Marco Lehmann <m99@posteo.de>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/m99coder/typescript-vscode/issues"
+  },
+  "homepage": "https://github.com/m99coder/typescript-vscode#readme",
+  "devDependencies": {
+    "@types/node": "^17.0.25",
+    "@typescript-eslint/eslint-plugin": "^5.20.0",
+    "@typescript-eslint/parser": "^5.20.0",
+    "eslint": "^8.13.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "prettier": "^2.6.2",
+    "typescript": "^4.6.3"
+  }
+}

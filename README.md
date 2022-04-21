@@ -59,3 +59,10 @@ Some formatting settings like format on save:
   "files.insertFinalNewline": true
 }
 ```
+
+## Tasks
+
+- [x] add `eslint` and `prettier` for code style
+- [x] add a working test setup using `jest` and `ts-jest`
+- [ ] `ts-node-dev` for hot reloading
+- [ ] `fastify` to spin up a web server

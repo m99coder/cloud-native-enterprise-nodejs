@@ -6,12 +6,29 @@
 
 ## Keyboard Shortcuts
 
+Views
+
 |Shortcut|Functionality|
 |---|---|
-|`⇧⌘M`|Problems panel|
+|`⇧⌘E`|Explorer|
+|`⇧⌘F`|Search|
+|`⇧⌘G`|Source control|
+|`⇧⌘D`|Run and debug|
+
+Panels
+
+|Shortcut|Functionality|
+|---|---|
+|`⇧⌘M`|Problems|
+|`⇧⌘U`|Output|
+|`⇧⌘Y`|Debug output|
+
+Miscellaneous
+
+|Shortcut|Functionality|
+|---|---|
 |`⌘.`|Quick fix menu|
 |`F5`|Start debugger (when source file is selected and a launch configuration is present)|
-|`⇧⌘D`|Debug view|
 |`⇧⌘B`|Run build task (default task is defined in `.vscode/tasks.json`)|
 
 ## Useful Settings
@@ -28,3 +45,16 @@ Exclude JavaScript files generated from TypeScript files:
 ```
 
 To enable JavaScript inside a TypeScript project, set `allowJs` property to `true` in the `tsconfig.json`.
+
+Some formatting settings like format on save:
+
+```json
+{
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "eslint.alwaysShowStatus": true,
+  "eslint.format.enable": true,
+  "files.insertFinalNewline": true
+}
+```

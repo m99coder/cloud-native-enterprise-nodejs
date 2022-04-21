@@ -22,6 +22,7 @@ Panels
 |`⇧⌘M`|Problems|
 |`⇧⌘U`|Output|
 |`⇧⌘Y`|Debug output|
+|`⌘J`|Toggle panel view|
 
 Miscellaneous
 

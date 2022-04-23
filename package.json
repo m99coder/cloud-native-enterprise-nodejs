@@ -35,7 +35,6 @@
     "test:dev": "jest --watchAll"
   },
   "dependencies": {
-    "fastify": "^4.0.0-rc.1",
-    "pino": "^7.10.0"
+    "fastify": "^4.0.0-rc.1"
   }
 }

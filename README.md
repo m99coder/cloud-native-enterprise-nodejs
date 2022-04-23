@@ -61,3 +61,7 @@ Some formatting settings like format on save:
   "files.insertFinalNewline": true
 }
 ```
+
+## Fastify
+
+The Fastify web framework comes bundled with Pino by default, as described [here](https://github.com/pinojs/pino/blob/master/docs/web.md#fastify).

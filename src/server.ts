@@ -31,9 +31,14 @@ const server = build({
 
 server.listen({ port }, (err) => {
   if (err) throw err
+
   // uncomment to test `uncaughtException` handler
   // throw new Error('Provoke uncaught exception')
+  // uncomment to test `unhandledRejection` handler
+  // Promise.reject(new Error('Provoke unhandled rejection'))
 })
+
+// SIGNALS –––
 
 // graceful shutdown
 // begin reading from stdin so the process does not exit
@@ -58,8 +63,16 @@ process.on('exit', (code) => {
   server.log[logMethod]({ code }, `Exit with code ${code}`)
 })
 
+// EXCEPTIONS & REJECTIONS –––
+
 // log any uncaught exception and exit in a controlled way
 process.on('uncaughtException', (err) => {
   server.log.error({ err }, 'Uncaught exception has occured')
+  process.exit(1)
+})
+
+// log any unhandled rejection and exit in a controlled way
+process.on('unhandledRejection', (err) => {
+  server.log.error({ err }, 'Unhandled rejection has occurred')
   process.exit(1)
 })

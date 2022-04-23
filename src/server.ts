@@ -54,3 +54,9 @@ process.on('SIGTERM', shutdown)
 process.on('exit', (code) => {
   server.log.info({ code }, `Exit with code ${code}`)
 })
+
+// log any uncaught exception and exit in a controlled way
+process.on('uncaughtException', (err) => {
+  server.log.error({ err }, 'Uncaught exception has occured')
+  process.exit(1)
+})

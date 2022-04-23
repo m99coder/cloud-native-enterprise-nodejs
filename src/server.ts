@@ -25,10 +25,8 @@ const server = build({
   disableRequestLogging: true,
   // request ID header (`request-id`) is supported and injected up by default
   // see: https://www.fastify.io/docs/latest/Reference/Server/#requestidheader
-  // otherwise use UUIDv4 for request IDs instead of auto-incrementing numbers
-  genReqId: () => {
-    return uuidv4()
-  },
+  // otherwise use UUIDv4 for request IDs, instead of auto-incremented number
+  genReqId: () => uuidv4(),
 })
 
 server.listen({ port }, (err) => {

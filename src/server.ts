@@ -29,3 +29,25 @@ const server = build({
 server.listen({ port }, (err) => {
   if (err) throw err
 })
+
+// graceful shutdown
+// begin reading from stdin so the process does not exit
+process.stdin.resume()
+
+const shutdown = (signal: string) => {
+  server.log.info(`Received ${signal}`)
+  server.close()
+  // close resources of backing services here in synchronous calls
+  process.exit(0)
+}
+
+// process is killed with CTRL+C
+process.on('SIGINT', shutdown)
+
+// process is killed with SIGTERM (`kill <pid>`)
+process.on('SIGTERM', shutdown)
+
+// callback for `process.exit`
+process.on('exit', (code) => {
+  server.log.info({ code }, `Exit with code ${code}`)
+})

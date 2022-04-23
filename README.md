@@ -26,11 +26,11 @@ Panels
 
 Miscellaneous
 
-| Shortcut | Functionality                                                                       |
-| -------- | ----------------------------------------------------------------------------------- |
-| `⌘.`     | Quick fix menu                                                                      |
-| `F5`     | Start debugger (when source file is selected and a launch configuration is present) |
-| `⇧⌘B`    | Run build task                                                                      |
+| Shortcut | Functionality  |
+| -------- | -------------- |
+| `⌘.`     | Quick fix menu |
+| `F5`     | Start debugger |
+| `⇧⌘B`    | Run build task |
 
 NPM script running was added with VSCode 1.23 and is briefly explained [here](https://code.visualstudio.com/updates/v1_23#_npm-script-running).
 
@@ -82,3 +82,16 @@ Jay Wolfe has some nice blog posts about using Fastify the right way:
 
 - [Setup Your Fastify Server With Logging The Right Way - No More Express](https://jaywolfe.dev/setup-your-fastify-server-with-logging-the-right-way-no-more-express-2/)
 - [Setup A Fastify App with Jest Tests the Right Way](https://jaywolfe.dev/setup-a-fastify-app-with-jest-tests-the-right-way/)
+
+## Testing
+
+To make use of the coverage report it’s recommended to install the [Jest VSCode plugin](https://marketplace.visualstudio.com/items?itemName=Orta.vscode-jest).
+
+```shell
+# run tests
+npm test
+
+# run tests and generate coverage report
+npm run test:coverage
+open coverage/lcov-report/index.html
+```

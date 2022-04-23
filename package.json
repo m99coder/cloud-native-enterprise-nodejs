@@ -37,9 +37,11 @@
     "lint": "eslint --ext .ts --ignore-path .eslintignore .",
     "start": "node out/server.js",
     "test": "jest",
+    "test:coverage": "jest --coverage",
     "test:dev": "jest --watchAll"
   },
   "dependencies": {
+    "dotenv": "^16.0.0",
     "fastify": "^4.0.0-rc.1",
     "uuid": "^8.3.2"
   }

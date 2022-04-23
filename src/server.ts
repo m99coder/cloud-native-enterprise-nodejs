@@ -1,5 +1,11 @@
+import { config } from 'dotenv'
 import { v4 as uuidv4 } from 'uuid'
+
 import build from './app'
+
+// read port from environment variables
+config()
+const port = parseInt(process.env.PORT, 10) || 3000
 
 const server = build({
   logger: {
@@ -20,6 +26,6 @@ const server = build({
   },
 })
 
-server.listen({ port: 3000 }, (err) => {
+server.listen({ port }, (err) => {
   if (err) throw err
 })

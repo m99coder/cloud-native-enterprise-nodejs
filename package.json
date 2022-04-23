@@ -29,8 +29,10 @@
     "typescript": "^4.6.3"
   },
   "scripts": {
+    "build": "tsc",
+    "clean": "npx rimraf out",
     "dev": "tsnd --respawn src/server.ts",
-    "start": "node out/server.js",
+    "start": "node out/src/server.js",
     "test": "jest",
     "test:dev": "jest --watchAll"
   },

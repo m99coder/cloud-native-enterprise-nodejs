@@ -1,3 +1,5 @@
+// import EventEmitter from 'events'
+
 import { config } from 'dotenv'
 import { stdTimeFunctions } from 'pino'
 import { v4 as uuidv4 } from 'uuid'
@@ -34,6 +36,13 @@ server.listen({ port }, (err) => {
 
   // uncomment to test `uncaughtException` handler
   // throw new Error('Provoke uncaught exception')
+
+  // uncomment to test `uncaughtException` handler
+  // new EventEmitter().emit(
+  //   'error',
+  //   new Error('Provoke uncaught EventEmitter error')
+  // )
+
   // uncomment to test `unhandledRejection` handler
   // Promise.reject(new Error('Provoke unhandled rejection'))
 })

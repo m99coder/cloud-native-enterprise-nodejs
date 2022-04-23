@@ -1,53 +1,6 @@
 # TypeScript in Visual Studio Code
 
-> <https://code.visualstudio.com/docs/typescript/typescript-tutorial>
-> <https://code.visualstudio.com/docs/typescript/typescript-compiling>
-> <https://code.visualstudio.com/docs/typescript/typescript-debugging>
-
-## Keyboard Shortcuts
-
-Views
-
-| Shortcut | Functionality  |
-| -------- | -------------- |
-| `⇧⌘E`    | Explorer       |
-| `⇧⌘F`    | Search         |
-| `⇧⌘G`    | Source control |
-| `⇧⌘D`    | Run and debug  |
-
-Panels
-
-| Shortcut | Functionality     |
-| -------- | ----------------- |
-| `⇧⌘M`    | Problems          |
-| `⇧⌘U`    | Output            |
-| `⇧⌘Y`    | Debug output      |
-| `⌘J`     | Toggle panel view |
-
-Miscellaneous
-
-| Shortcut | Functionality  |
-| -------- | -------------- |
-| `⌘.`     | Quick fix menu |
-| `F5`     | Start debugger |
-| `⇧⌘B`    | Run build task |
-
-NPM script running was added with VSCode 1.23 and is briefly explained [here](https://code.visualstudio.com/updates/v1_23#_npm-script-running).
-
-## Useful Settings
-
-Exclude JavaScript files generated from TypeScript files:
-
-```json
-{
-  "files.exclude": {
-    "**/*.js": { "when": "$(basename).ts" },
-    "**/**.js": { "when": "$(basename).tsx" }
-  }
-}
-```
-
-To enable JavaScript inside a TypeScript project, set `allowJs` property to `true` in the `tsconfig.json`.
+## Configuration
 
 Some formatting settings like format on save using the [ESLint plugin](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) for VSCode:
 
@@ -85,7 +38,7 @@ Jay Wolfe has some nice blog posts about using Fastify the right way:
 
 ## Testing
 
-To make use of the coverage report it’s recommended to install the [Jest VSCode plugin](https://marketplace.visualstudio.com/items?itemName=Orta.vscode-jest).
+To make use of the coverage report it’s recommended to install the [Jest plugin](https://marketplace.visualstudio.com/items?itemName=Orta.vscode-jest).
 
 ```shell
 # run tests
@@ -94,4 +47,26 @@ npm test
 # run tests and generate coverage report
 npm run test:coverage
 open coverage/lcov-report/index.html
+```
+
+## Running
+
+```shell
+# clean compile folder
+npm run clean
+
+# compile TypeScript to JavaScript
+npm run build
+
+# run application
+npm start
+
+# run application in development mode with hot-reloading
+npm run dev
+
+# lint sources
+npm run lint
+
+# format sources
+npm run fmt
 ```

@@ -8,29 +8,31 @@
 
 Views
 
-|Shortcut|Functionality|
-|---|---|
-|`⇧⌘E`|Explorer|
-|`⇧⌘F`|Search|
-|`⇧⌘G`|Source control|
-|`⇧⌘D`|Run and debug|
+| Shortcut | Functionality  |
+| -------- | -------------- |
+| `⇧⌘E`    | Explorer       |
+| `⇧⌘F`    | Search         |
+| `⇧⌘G`    | Source control |
+| `⇧⌘D`    | Run and debug  |
 
 Panels
 
-|Shortcut|Functionality|
-|---|---|
-|`⇧⌘M`|Problems|
-|`⇧⌘U`|Output|
-|`⇧⌘Y`|Debug output|
-|`⌘J`|Toggle panel view|
+| Shortcut | Functionality     |
+| -------- | ----------------- |
+| `⇧⌘M`    | Problems          |
+| `⇧⌘U`    | Output            |
+| `⇧⌘Y`    | Debug output      |
+| `⌘J`     | Toggle panel view |
 
 Miscellaneous
 
-|Shortcut|Functionality|
-|---|---|
-|`⌘.`|Quick fix menu|
-|`F5`|Start debugger (when source file is selected and a launch configuration is present)|
-|`⇧⌘B`|Run build task (default task is defined in `.vscode/tasks.json`)|
+| Shortcut | Functionality                                                                       |
+| -------- | ----------------------------------------------------------------------------------- |
+| `⌘.`     | Quick fix menu                                                                      |
+| `F5`     | Start debugger (when source file is selected and a launch configuration is present) |
+| `⇧⌘B`    | Run build task                                                                      |
+
+NPM script running was added with VSCode 1.23 and is briefly explained [here](https://code.visualstudio.com/updates/v1_23#_npm-script-running).
 
 ## Useful Settings
 

@@ -31,6 +31,7 @@ const server = build({
 
 server.listen({ port }, (err) => {
   if (err) throw err
+  throw new Error('Provoke uncaught exception')
 })
 
 // graceful shutdown
@@ -52,7 +53,8 @@ process.on('SIGTERM', shutdown)
 
 // callback for `process.exit`
 process.on('exit', (code) => {
-  server.log.info({ code }, `Exit with code ${code}`)
+  const logMethod = code === 0 ? 'info' : 'error'
+  server.log[logMethod]({ code }, `Exit with code ${code}`)
 })
 
 // log any uncaught exception and exit in a controlled way

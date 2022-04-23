@@ -16,6 +16,7 @@
   "devDependencies": {
     "@types/jest": "^27.4.1",
     "@types/node": "^17.0.25",
+    "@types/uuid": "^8.3.4",
     "@typescript-eslint/eslint-plugin": "^5.20.0",
     "@typescript-eslint/parser": "^5.20.0",
     "eslint": "^8.13.0",
@@ -32,11 +33,14 @@
     "build": "tsc",
     "clean": "npx rimraf out",
     "dev": "tsnd --respawn src/server.ts",
+    "fmt": "npm run lint -- --fix",
+    "lint": "eslint --ext .ts --ignore-path .eslintignore .",
     "start": "node out/server.js",
     "test": "jest",
     "test:dev": "jest --watchAll"
   },
   "dependencies": {
-    "fastify": "^4.0.0-rc.1"
+    "fastify": "^4.0.0-rc.1",
+    "uuid": "^8.3.2"
   }
 }

@@ -49,15 +49,22 @@ Exclude JavaScript files generated from TypeScript files:
 
 To enable JavaScript inside a TypeScript project, set `allowJs` property to `true` in the `tsconfig.json`.
 
-Some formatting settings like format on save:
+Some formatting settings like format on save using the [ESLint plugin](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) for VSCode:
 
 ```json
 {
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": false,
+  "editor.defaultFormatter": "dbaeumer.vscode-eslint",
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   },
-  "eslint.alwaysShowStatus": true,
-  "eslint.format.enable": true,
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+  ],
   "files.insertFinalNewline": true
 }
 ```
@@ -70,3 +77,8 @@ The Fastify web framework comes bundled with Pino by default, as described [here
 npm i -g pino-pretty
 npm run dev | pino-pretty
 ```
+
+Jay Wolfe has some nice blog posts about using Fastify the right way:
+
+- [Setup Your Fastify Server With Logging The Right Way - No More Express](ttps://jaywolfe.dev/setup-your-fastify-server-with-logging-the-right-way-no-more-express-2/)
+- [Setup A Fastify App with Jest Tests the Right Way](https://jaywolfe.dev/setup-a-fastify-app-with-jest-tests-the-right-way/)

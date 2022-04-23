@@ -2,8 +2,8 @@
 
 ## Build a 12-Factor Node.js App with Docker
 
-> <https://m.academy/courses/build-12-factor-nodejs-app-docker/>
-> <https://12factor.net/>
+> - <https://m.academy/courses/build-12-factor-nodejs-app-docker/>
+> - <https://12factor.net/>
 
 ### 1. Codebase
 
@@ -11,8 +11,8 @@
 - Semantic versioning for tags within the repository
 - `main` branch used for releasing
 
-> <https://git-scm.com/book/en/v2>
-> <https://www.atlassian.com/git/tutorials>
+> - <https://git-scm.com/book/en/v2>
+> - <https://www.atlassian.com/git/tutorials>
 
 ### 2. Dependencies
 
@@ -23,11 +23,11 @@
 - deterministic build command, e.g. `npm install`
 - add `node_modules` to `.gitignore`
 
-> <https://docs.npmjs.com/about-semantic-versioning>
-> <https://docs.npmjs.com/cli/v8/commands/npm-install>
-> <https://docs.npmjs.com/cli/v8/commands/npm-ci>
-> <https://docs.npmjs.com/cli/v8/commands/npx>
-> <https://www.youtube.com/watch?v=kK4Meix58R4>
+> - <https://docs.npmjs.com/about-semantic-versioning>
+> - <https://docs.npmjs.com/cli/v8/commands/npm-install>
+> - <https://docs.npmjs.com/cli/v8/commands/npm-ci>
+> - <https://docs.npmjs.com/cli/v8/commands/npx>
+> - <https://www.youtube.com/watch?v=kK4Meix58R4>
 
 ### 3. Config
 
@@ -38,9 +38,9 @@
 - internal config that does not vary is not included
 - config is stored in environment variables that are never grouped (e.g. to environments)
 
-> <https://nodejs.dev/learn/how-to-read-environment-variables-from-nodejs>
-> <https://www.npmjs.com/package/dotenv>
-> <https://direnv.net/>
+> - <https://nodejs.dev/learn/how-to-read-environment-variables-from-nodejs>
+> - <https://www.npmjs.com/package/dotenv>
+> - <https://direnv.net/>
 
 ### 4. Backing services
 
@@ -78,26 +78,26 @@
 
 Docker (release)
 
-> <https://docs.docker.com/get-started/>
-> <https://docs.docker.com/engine/reference/builder/>
-> <https://docs.docker.com/engine/reference/builder/#dockerignore-file>
-> <https://docs.docker.com/engine/reference/commandline/cli/>
-> <https://docs.docker.com/engine/reference/commandline/build/>
+> - <https://docs.docker.com/get-started/>
+> - <https://docs.docker.com/engine/reference/builder/>
+> - <https://docs.docker.com/engine/reference/builder/#dockerignore-file>
+> - <https://docs.docker.com/engine/reference/commandline/cli/>
+> - <https://docs.docker.com/engine/reference/commandline/build/>
 
 Multi-stage builds
 
-> <https://docs.docker.com/develop/develop-images/multistage-build/>
-> <https://blog.alexellis.io/mutli-stage-docker-builds/>
-> <https://vsupalov.com/docker-image-layers/>
-> <https://docs.docker.com/engine/reference/commandline/history/>
-> <https://github.com/wagoodman/dive>
+> - <https://docs.docker.com/develop/develop-images/multistage-build/>
+> - <https://blog.alexellis.io/mutli-stage-docker-builds/>
+> - <https://vsupalov.com/docker-image-layers/>
+> - <https://docs.docker.com/engine/reference/commandline/history/>
+> - <https://github.com/wagoodman/dive>
 
 Docker Compose (run)
 
-> <https://docs.docker.com/compose/>
-> <https://docs.docker.com/compose/reference/>
-> <https://docs.docker.com/compose/environment-variables/>
-> <https://docs.docker.com/compose/env-file/>
+> - <https://docs.docker.com/compose/>
+> - <https://docs.docker.com/compose/reference/>
+> - <https://docs.docker.com/compose/environment-variables/>
+> - <https://docs.docker.com/compose/env-file/>
 
 ### 6. Processes
 
@@ -107,8 +107,8 @@ Docker Compose (run)
 - “sticky sessions” should never be used or relied upon
 - session state data is a good candidate for a datastore (Memcached, Redis)
 
-> <https://docs.docker.com/storage/>
-> <https://redis.com/solutions/use-cases/session-management/>
+> - <https://docs.docker.com/storage/>
+> - <https://redis.com/solutions/use-cases/session-management/>
 
 ### 7. Port binding
 
@@ -117,8 +117,8 @@ Docker Compose (run)
 - a routing layer handles routing requests from a public-facing hostname to the port-bound web processes
 - one app can become the backing service for another app, by providing the URL to the backing app as a resource handle in the config of the consuming app
 
-> <https://docs.docker.com/network/>
-> <https://docs.docker.com/compose/networking/>
+> - <https://docs.docker.com/network/>
+> - <https://docs.docker.com/compose/networking/>
 
 ### 8. Concurrency
 
@@ -132,11 +132,11 @@ Docker Compose (run)
   - respond to crashed processes
   - handle user-initiated restarts and shutdowns
 
-> <https://www.nginx.com/resources/glossary/load-balancing/>
-> <https://www.digitalocean.com/community/tutorial_series/from-containers-to-kubernetes-with-node-js>
-> <https://www.digitalocean.com/community/tutorials/how-to-set-up-a-node-js-application-for-production-on-ubuntu-16-04>
-> <https://blog.logrocket.com/how-to-run-a-node-js-server-with-nginx/>
-> <https://github.com/docker/awesome-compose/tree/master/nginx-nodejs-redis>
+> - <https://www.nginx.com/resources/glossary/load-balancing/>
+> - <https://www.digitalocean.com/community/tutorial_series/from-containers-to-kubernetes-with-node-js>
+> - <https://www.digitalocean.com/community/tutorials/how-to-set-up-a-node-js-application-for-production-on-ubuntu-16-04>
+> - <https://blog.logrocket.com/how-to-run-a-node-js-server-with-nginx/>
+> - <https://github.com/docker/awesome-compose/tree/master/nginx-nodejs-redis>
 
 ### 9. Disposability
 
@@ -148,13 +148,13 @@ Docker Compose (run)
 - operation need to be idempotent or wrapped in a transaction for that purpose
 - app is architected to handle unexpected, non-graceful terminations
 
-> <https://nodejs.org/api/process.html#signal-events>
-> <https://blog.dashlane.com/implementing-nodejs-http-graceful-shutdown/>
-> <https://expressjs.com/en/advanced/healthcheck-graceful-shutdown.html>
-> <https://docs.lagoon.sh/using-lagoon-advanced/nodejs/>
-> <https://docs.docker.com/config/containers/start-containers-automatically/>
-> <https://docs.docker.com/compose/compose-file/#restart>
-> <https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/>
+> - <https://nodejs.org/api/process.html#signal-events>
+> - <https://blog.dashlane.com/implementing-nodejs-http-graceful-shutdown/>
+> - <https://expressjs.com/en/advanced/healthcheck-graceful-shutdown.html>
+> - <https://docs.lagoon.sh/using-lagoon-advanced/nodejs/>
+> - <https://docs.docker.com/config/containers/start-containers-automatically/>
+> - <https://docs.docker.com/compose/compose-file/#restart>
+> - <https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/>
 
 ### 10. Dev/prod parity
 
@@ -171,16 +171,16 @@ Docker Compose (run)
 - each running process writes its event stream, unbuffered, to `stdout`
 - archival destinations are completely managed by the execution environment
 
-> <https://www.twilio.com/blog/guide-node-js-logging>
-> <https://www.npmjs.com/package/winston>
-> <https://www.fluentd.org/>
-> <https://docs.fluentd.org/language-bindings/nodejs>
-> <https://docs.docker.com/config/containers/logging/>
-> <https://grafana.com/oss/loki/>
-> <https://grafana.com/docs/loki/latest/installation/docker/>
-> <https://blog.ruanbekker.com/blog/2020/08/13/getting-started-on-logging-with-loki-using-docker/>
-> <https://thesmarthomejourney.com/2021/08/23/loki-grafana-log-aggregation/>
-> <https://github.com/nginxinc/docker-nginx/blob/master/mainline/alpine/Dockerfile#L117-L119>
+> - <https://www.twilio.com/blog/guide-node-js-logging>
+> - <https://www.npmjs.com/package/winston>
+> - <https://www.fluentd.org/>
+> - <https://docs.fluentd.org/language-bindings/nodejs>
+> - <https://docs.docker.com/config/containers/logging/>
+> - <https://grafana.com/oss/loki/>
+> - <https://grafana.com/docs/loki/latest/installation/docker/>
+> - <https://blog.ruanbekker.com/blog/2020/08/13/getting-started-on-logging-with-loki-using-docker/>
+> - <https://thesmarthomejourney.com/2021/08/23/loki-grafana-log-aggregation/>
+> - <https://github.com/nginxinc/docker-nginx/blob/master/mainline/alpine/Dockerfile#L117-L119>
 
 ### 12. Admin processes
 
@@ -192,18 +192,18 @@ Docker Compose (run)
 
 ## Typescript and Docker
 
-> <https://github.com/flolu/docker-typescript-debug>
-> <https://www.youtube.com/watch?v=1WUoITRINf0>
-> <https://medium.com/@kartikio/setup-node-ts-local-development-environment-with-docker-and-hot-reloading-922db9016119>
-> <https://javascript.plainenglish.io/create-and-dockerize-an-express-typescript-application-5c9f6d67ec2f>
-> <https://www.youtube.com/watch?v=5JQlFK6MdVQ>
-> <https://dev.to/chandrapantachhetri/docker-postgres-node-typescript-setup-47db>
-> <https://dev.to/dariansampare/setting-up-docker-typescript-node-hot-reloading-code-changes-in-a-running-container-2b2f>
-> <https://towardsdev.com/writing-a-docker-file-for-your-node-js-typescript-micro-service-c5170b957893>
-> <https://cloudnweb.dev/2019/09/building-a-production-ready-node-js-app-with-typescript-and-docker/>
-> <https://github.com/microsoft/TypeScript/wiki/Docker-Quickstart>
-> <https://nodejs.org/en/docs/guides/debugging-getting-started/>
+> - <https://github.com/flolu/docker-typescript-debug>
+> - <https://www.youtube.com/watch?v=1WUoITRINf0>
+> - <https://medium.com/@kartikio/setup-node-ts-local-development-environment-with-docker-and-hot-reloading-922db9016119>
+> - <https://javascript.plainenglish.io/create-and-dockerize-an-express-typescript-application-5c9f6d67ec2f>
+> - <https://www.youtube.com/watch?v=5JQlFK6MdVQ>
+> - <https://dev.to/chandrapantachhetri/docker-postgres-node-typescript-setup-47db>
+> - <https://dev.to/dariansampare/setting-up-docker-typescript-node-hot-reloading-code-changes-in-a-running-container-2b2f>
+> - <https://towardsdev.com/writing-a-docker-file-for-your-node-js-typescript-micro-service-c5170b957893>
+> - <https://cloudnweb.dev/2019/09/building-a-production-ready-node-js-app-with-typescript-and-docker/>
+> - <https://github.com/microsoft/TypeScript/wiki/Docker-Quickstart>
+> - <https://nodejs.org/en/docs/guides/debugging-getting-started/>
 
 ## Distributed Systems with Node.js
 
-> <https://www.oreilly.com/library/view/distributed-systems-with/9781492077282/>
+> - <https://www.oreilly.com/library/view/distributed-systems-with/9781492077282/>

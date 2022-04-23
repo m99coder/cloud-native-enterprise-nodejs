@@ -32,7 +32,7 @@
     "build": "tsc",
     "clean": "npx rimraf out",
     "dev": "tsnd --respawn src/server.ts",
-    "start": "node out/src/server.js",
+    "start": "node out/server.js",
     "test": "jest",
     "test:dev": "jest --watchAll"
   },

@@ -22,6 +22,8 @@ Some formatting settings like format on save using the [ESLint plugin](https://m
 }
 ```
 
+To support [direnv](https://direnv.net/), everything you need to do is to define an `.envrc` that calls `dotenv` as described [here](https://github.com/direnv/direnv/issues/284#issuecomment-315275436).
+
 ## Fastify
 
 The Fastify web framework comes bundled with Pino by default, as described [here](https://github.com/pinojs/pino/blob/master/docs/web.md#fastify). A pretty-printed variant can be achieved by piping stdout to [pino-pretty](https://github.com/pinojs/pino-pretty):
@@ -60,6 +62,9 @@ npm run build
 
 # run application
 npm start
+
+# run application on custom port
+PORT=4000 npm start
 
 # run application in development mode with hot-reloading
 npm run dev

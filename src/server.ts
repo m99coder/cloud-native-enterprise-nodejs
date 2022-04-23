@@ -19,9 +19,9 @@ const server = build({
     // print time in ISO format
     timestamp: stdTimeFunctions.isoTime,
   },
-  // just to demonstrate the custom measurement of response time using the hooks below
+  // just to demonstrate the custom measurement of response time using the hooks in `app.ts`
   disableRequestLogging: true,
-  // OpenTelemetry headers (`request-id`) are supported by default, don’t use in this case
+  // request ID headers (`request-id`) are supported by default
   // see: https://www.fastify.io/docs/latest/Reference/Server/#requestidheader
   // otherwise use UUIDv4 for request IDs instead of auto-incrementing numbers
   genReqId: () => {

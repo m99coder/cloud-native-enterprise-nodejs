@@ -1,7 +1,12 @@
 import Fastify from 'fastify'
 
 const fastify = Fastify({
-  logger: true,
+  logger: {
+    name: 'typescript-vscode',
+    level: 'info',
+    timestamp: () => `,"time":"${new Date(Date.now()).toISOString()}"`,
+    messageKey: 'message',
+  },
 })
 
 fastify.get('/', async (request, reply) => {

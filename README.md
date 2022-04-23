@@ -64,4 +64,9 @@ Some formatting settings like format on save:
 
 ## Fastify
 
-The Fastify web framework comes bundled with Pino by default, as described [here](https://github.com/pinojs/pino/blob/master/docs/web.md#fastify).
+The Fastify web framework comes bundled with Pino by default, as described [here](https://github.com/pinojs/pino/blob/master/docs/web.md#fastify). A pretty-printed variant can be achieved by piping stdout to [pino-pretty](https://github.com/pinojs/pino-pretty):
+
+```shell
+npm i -g pino-pretty
+npm run dev | pino-pretty
+```

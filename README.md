@@ -80,5 +80,5 @@ npm run dev | pino-pretty
 
 Jay Wolfe has some nice blog posts about using Fastify the right way:
 
-- [Setup Your Fastify Server With Logging The Right Way - No More Express](ttps://jaywolfe.dev/setup-your-fastify-server-with-logging-the-right-way-no-more-express-2/)
+- [Setup Your Fastify Server With Logging The Right Way - No More Express](https://jaywolfe.dev/setup-your-fastify-server-with-logging-the-right-way-no-more-express-2/)
 - [Setup A Fastify App with Jest Tests the Right Way](https://jaywolfe.dev/setup-a-fastify-app-with-jest-tests-the-right-way/)

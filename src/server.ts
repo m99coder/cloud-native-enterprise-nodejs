@@ -1,15 +1,17 @@
 import Fastify from 'fastify'
+import pino from 'pino'
+
+const logger = pino({ level: 'info' })
 
 const fastify = Fastify({
-  logger: true,
+  logger: logger,
 })
 
 fastify.get('/', async (request, reply) => {
   reply.type('application/json').code(200)
-  return { hello: 'world' }
+  return { message: 'Hello, world' }
 })
 
-fastify.listen({ port: 3000 }, (err, address) => {
+fastify.listen({ port: 3000 }, (err) => {
   if (err) throw err
-  console.log(`Server is now listening on ${address}`)
 })

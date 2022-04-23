@@ -47,7 +47,7 @@ const shutdown = (signal: string) => {
 // process is killed with CTRL+C
 process.on('SIGINT', shutdown)
 
-// process is killed with SIGTERM (`kill <pid>`)
+// process is killed with SIGTERM (`kill <pid>`, `docker stop`)
 process.on('SIGTERM', shutdown)
 
 // callback for `process.exit`

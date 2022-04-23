@@ -31,7 +31,8 @@ const server = build({
 
 server.listen({ port }, (err) => {
   if (err) throw err
-  throw new Error('Provoke uncaught exception')
+  // uncomment to test `uncaughtException` handler
+  // throw new Error('Provoke uncaught exception')
 })
 
 // graceful shutdown

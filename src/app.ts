@@ -29,7 +29,7 @@ const build = (opts = {}) => {
 
   app.addHook('onRequest', (req, reply: EnhancedReply, done) => {
     reply.startTime = now()
-    req.log.info({ url: req.raw.url, id: req.id }, 'received request')
+    req.log.info({ url: req.raw.url, id: req.id }, 'Received request')
     done()
   })
 
@@ -40,7 +40,7 @@ const build = (opts = {}) => {
         statusCode: reply.raw.statusCode,
         durationMs: now() - reply.startTime,
       },
-      'request completed'
+      'Request completed'
     )
     done()
   })

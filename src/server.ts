@@ -1,4 +1,5 @@
 import { config } from 'dotenv'
+import { stdTimeFunctions } from 'pino'
 import { v4 as uuidv4 } from 'uuid'
 
 import build from './app'
@@ -15,6 +16,8 @@ const server = build({
       paths: ['headers.authorization'],
       censor: '**redacted**',
     },
+    // print time in ISO format
+    timestamp: stdTimeFunctions.isoTime,
   },
   // just to demonstrate the custom measurement of response time using the hooks below
   disableRequestLogging: true,

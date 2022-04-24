@@ -225,3 +225,7 @@ docker run --rm -it \
   -e MAX_MAP_COUNT=262144 \
   --name elk sebp/elk:oss-8.1.0
 ```
+
+[OpenTelemetry – Grafana Demo](https://github.com/connorlindsey/otel-grafana-demo)
+
+> Demo application showing how to instrument a Node application with OpenTelemetry, Prometheus, Jaeger, Loki, and Grafana. Built with Next.js, Fastify, and Postgres.

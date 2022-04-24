@@ -1,17 +1,29 @@
-// import EventEmitter from 'events'
-
-import { config } from 'dotenv'
+import dotenv from 'dotenv'
 import { stdTimeFunctions } from 'pino'
 import { v4 as uuidv4 } from 'uuid'
 
 import build from './app'
 
+// CONFIGURATION –––
+
 // read port from environment variables
-config()
-const port = parseInt(process.env.PORT, 10) || 3000
+dotenv.config()
+
+type ServerConfig = {
+  logLevel: string
+  port: number
+}
+
+const effectiveConfig: ServerConfig = {
+  logLevel: process.env.LOG_LEVEL || 'info',
+  port: parseInt(process.env.PORT, 10) || 3000,
+}
+
+// SERVER –––
 
 const server = build({
   logger: {
+    level: effectiveConfig.logLevel,
     // redact sensitive information when logging
     // see: https://getpino.io/#/docs/redaction
     redact: {
@@ -29,13 +41,13 @@ const server = build({
   genReqId: () => uuidv4(),
 })
 
-server.listen({ port }, (err) => {
+server.listen({ port: effectiveConfig.port }, (err) => {
   if (err) throw err
 
   // uncomment to test `uncaughtException` handler
   // throw new Error('Provoke uncaught exception')
 
-  // uncomment to test `uncaughtException` handler
+  // add `EventEmitter` import and uncomment to test `uncaughtException` handler
   // new EventEmitter().emit(
   //   'error',
   //   new Error('Provoke uncaught EventEmitter error')
@@ -53,8 +65,13 @@ process.stdin.resume()
 
 const shutdown = (signal: string) => {
   server.log.info(`Received ${signal}`)
+
+  // close server and respond to every new incoming request with a 503
   server.close()
+
   // close resources of backing services here in synchronous calls
+  // …
+
   process.exit(0)
 }
 
@@ -72,14 +89,17 @@ process.on('exit', (code) => {
 
 // EXCEPTIONS & REJECTIONS –––
 
-// log any uncaught exception and exit in a controlled way
-process.on('uncaughtException', (err) => {
-  server.log.error({ err }, 'Uncaught exception has occured')
+const crash = (err: Error | unknown, msg: string) => {
+  server.log.error({ err }, msg)
   process.exit(1)
-})
+}
+
+// log any uncaught exception and exit in a controlled way
+process.on('uncaughtException', (err: Error) =>
+  crash(err, 'Uncaught exception has occured')
+)
 
 // log any unhandled rejection and exit in a controlled way
-process.on('unhandledRejection', (err) => {
-  server.log.error({ err }, 'Unhandled rejection has occurred')
-  process.exit(1)
-})
+process.on('unhandledRejection', (err: unknown) =>
+  crash(err, 'Unhandled rejection has occured')
+)

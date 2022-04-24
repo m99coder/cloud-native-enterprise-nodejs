@@ -116,3 +116,5 @@ In order to use gzip compression, you need to provide the respective header. The
 ```shell
 curl -s http://localhost:3000/ -H "Accept-Encoding: gzip" | gunzip
 ```
+
+HAProxy can also be configured to close connections as soon as a maximum number of connections is reached to avoid back pressure.

@@ -45,7 +45,10 @@ const build = (opts = {}) => {
     done()
   })
 
-  app.get('/hello', () => ({ ok: true }))
+  // health check endpoint
+  app.get('/health', (_req, reply) => {
+    reply.code(200).send()
+  })
 
   // test with:
   // curl -i http://localhost:3000/

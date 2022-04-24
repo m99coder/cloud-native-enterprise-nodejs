@@ -8,10 +8,11 @@ test('default root route', async () => {
   expect(res.json()).toEqual({ ok: true })
 })
 
-test('hello route', async () => {
+test('health check route', async () => {
   const app = build()
   const res = await app.inject({
-    url: '/hello',
+    url: '/health',
   })
-  expect(res.json()).toEqual({ ok: true })
+  expect(res.statusCode).toEqual(200)
+  expect(res.body).toEqual('')
 })

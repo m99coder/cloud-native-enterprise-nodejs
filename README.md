@@ -94,12 +94,12 @@ PORT=3003 npm start
 ```shell
 # install and start HAProxy
 brew install haproxy
-haproxy -f ./haproxy.cfg
+haproxy -f ./haproxy/haproxy.cfg
 ```
 
 ```shell
 # open the stats dashboard
-open http://localhost:8404
+open http://localhost:3000/admin/stats
 
 # call the API
 curl -i http://localhost:3000
@@ -108,3 +108,5 @@ curl -i http://localhost:3000
 # HAProxy detects that the API is down
 # re-start the API server and HAProxy will include it into load-balancing again
 ```
+
+By default a health check is performed on Layer 4 (TCP). If `haproxy.cfg` defines `option httpchk GET /health` for a backend the health check is changing to be on Layer 7 (HTTP), as you can see in the stats dashboard (`LastChk` column).

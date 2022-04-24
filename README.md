@@ -63,9 +63,6 @@ npm run build
 # run application
 npm start
 
-# run application on custom port
-PORT=4000 npm start
-
 # run application in development mode with hot-reloading
 npm run dev
 
@@ -75,3 +72,10 @@ npm run lint
 # format sources
 npm run fmt
 ```
+
+Environment variables
+
+| Variable    | Type     | Default |
+| ----------- | -------- | ------- |
+| `LOG_LEVEL` | `string` | `info`  |
+| `PORT`      | `number` | 3000    |

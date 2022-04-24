@@ -187,9 +187,22 @@ $ wrk -c10 -d60s http://localhost:3003
 Running 1m test @ http://localhost:3003
   2 threads and 10 connections
   Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency     1.39ms    1.23ms  34.95ms   90.76%
-    Req/Sec     4.07k   502.92     4.86k    85.67%
-  485920 requests in 1.00m, 84.34MB read
-Requests/sec:   8094.31
-Transfer/sec:      1.40MB
+    Latency     1.39ms    1.43ms  50.17ms   92.33%
+    Req/Sec     4.13k   456.51     4.87k    89.17%
+  493651 requests in 1.00m, 85.68MB read
+Requests/sec:   8222.58
+Transfer/sec:      1.43MB
+```
+
+```shell
+$ haproxy -f ./haproxy/passthrough.cfg
+$ wrk -c10 -d60s http://localhost:3000
+Running 1m test @ http://localhost:3000
+  2 threads and 10 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     2.01ms    2.67ms  79.01ms   85.40%
+    Req/Sec     4.51k   579.69     6.26k    74.50%
+  538540 requests in 1.00m, 93.47MB read
+Requests/sec:   8972.15
+Transfer/sec:      1.56MB
 ```

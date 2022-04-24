@@ -79,3 +79,17 @@ Environment variables
 | ----------- | -------- | ------- |
 | `LOG_LEVEL` | `string` | `info`  |
 | `PORT`      | `number` | 3000    |
+
+## Scaling
+
+> HAProxy is a free and open source software that provides a high availability load balancer and reverse proxy for TCP and HTTP-based applications that spreads requests across multiple servers.
+
+```shell
+brew install haproxy
+haproxy -f ./haproxy.cfg
+open http://localhost:8404
+curl -i http://localhost:3000
+# terminate one of the API servers with `kill <pid>`
+# HAProxy detects that the API is down
+# re-start the API server and HAProxy will include it into load-balancing again
+```

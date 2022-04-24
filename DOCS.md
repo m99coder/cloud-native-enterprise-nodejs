@@ -172,11 +172,13 @@ Docker Compose (run)
 - archival destinations are completely managed by the execution environment
 
 > - <https://www.twilio.com/blog/guide-node-js-logging>
-> - <https://www.npmjs.com/package/winston>
+> - <https://getpino.io/#/>
+> - <https://skaug.dev/node-js-app-with-loki/>
 > - <https://www.fluentd.org/>
 > - <https://docs.fluentd.org/language-bindings/nodejs>
 > - <https://docs.docker.com/config/containers/logging/>
 > - <https://grafana.com/oss/loki/>
+> - <https://grafana.com/docs/loki/latest/clients/promtail/>
 > - <https://grafana.com/docs/loki/latest/installation/docker/>
 > - <https://blog.ruanbekker.com/blog/2020/08/13/getting-started-on-logging-with-loki-using-docker/>
 > - <https://thesmarthomejourney.com/2021/08/23/loki-grafana-log-aggregation/>
@@ -189,21 +191,3 @@ Docker Compose (run)
   - running a console (REPL) to run arbitrary code
   - running one-time scripts committed into the app’s repo
 - they run against a release, using the same codebase and config
-
-## Typescript and Docker
-
-> - <https://github.com/flolu/docker-typescript-debug>
-> - <https://www.youtube.com/watch?v=1WUoITRINf0>
-> - <https://medium.com/@kartikio/setup-node-ts-local-development-environment-with-docker-and-hot-reloading-922db9016119>
-> - <https://javascript.plainenglish.io/create-and-dockerize-an-express-typescript-application-5c9f6d67ec2f>
-> - <https://www.youtube.com/watch?v=5JQlFK6MdVQ>
-> - <https://dev.to/chandrapantachhetri/docker-postgres-node-typescript-setup-47db>
-> - <https://dev.to/dariansampare/setting-up-docker-typescript-node-hot-reloading-code-changes-in-a-running-container-2b2f>
-> - <https://towardsdev.com/writing-a-docker-file-for-your-node-js-typescript-micro-service-c5170b957893>
-> - <https://cloudnweb.dev/2019/09/building-a-production-ready-node-js-app-with-typescript-and-docker/>
-> - <https://github.com/microsoft/TypeScript/wiki/Docker-Quickstart>
-> - <https://nodejs.org/en/docs/guides/debugging-getting-started/>
-
-## Distributed Systems with Node.js
-
-> - <https://www.oreilly.com/library/view/distributed-systems-with/9781492077282/>

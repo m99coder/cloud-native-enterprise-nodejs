@@ -110,3 +110,9 @@ curl -i http://localhost:3000
 ```
 
 By default a health check is performed on Layer 4 (TCP). If `haproxy.cfg` defines `option httpchk GET /health` for a backend the health check is changing to be on Layer 7 (HTTP), as you can see in the stats dashboard (`LastChk` column).
+
+In order to use gzip compression, you need to provide the respective header. The HAProxy configuration file defines the compression to be available for content types `application/json` and `text/plain`.
+
+```shell
+curl -s http://localhost:3000/ -H "Accept-Encoding: gzip" | gunzip
+```

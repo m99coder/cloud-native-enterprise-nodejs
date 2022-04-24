@@ -174,6 +174,8 @@ Req/Bytes counts sampled once per second.
 466k requests in 60.02s, 84.8 MB read
 ```
 
+Based on these numbers the application reaches a throughput of ~5,000 requests/s when run locally on my specific machine. TP99 (top percentile 99) is ~5 ms, while TP99.999 is ~36 ms.
+
 > [wrk](https://github.com/wg/wrk) is a modern HTTP benchmarking tool capable of generating significant load when run on a single multi-core CPU.
 
 ```shell
@@ -191,5 +193,3 @@ Running 1m test @ http://localhost:3003
 Requests/sec:   8094.31
 Transfer/sec:      1.40MB
 ```
-
-Based on these numbers the application reaches a throughput of ~5,000 requests/s when run locally on my specific machine. TP99 (top percentile 99) is ~5 ms, while TP99.999 is ~36 ms.

@@ -174,7 +174,7 @@ Req/Bytes counts sampled once per second.
 466k requests in 60.02s, 84.8 MB read
 ```
 
-> [wrk] is a modern HTTP benchmarking tool capable of generating significant load when run on a single multi-core CPU.
+> [wrk](https://github.com/wg/wrk) is a modern HTTP benchmarking tool capable of generating significant load when run on a single multi-core CPU.
 
 ```shell
 brew install wrk

@@ -85,10 +85,25 @@ Environment variables
 > HAProxy is a free and open source software that provides a high availability load balancer and reverse proxy for TCP and HTTP-based applications that spreads requests across multiple servers.
 
 ```shell
+# start 3 server instances
+PORT=3001 npm start
+PORT=3002 npm start
+PORT=3003 npm start
+```
+
+```shell
+# install and start HAProxy
 brew install haproxy
 haproxy -f ./haproxy.cfg
+```
+
+```shell
+# open the stats dashboard
 open http://localhost:8404
+
+# call the API
 curl -i http://localhost:3000
+
 # terminate one of the API servers with `kill <pid>`
 # HAProxy detects that the API is down
 # re-start the API server and HAProxy will include it into load-balancing again

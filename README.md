@@ -178,3 +178,5 @@ Based on these numbers the application â€“ run locally on my specific machine â€
 - Loki for log ingestion
 - Grafana for log visualization
 - Jaeger [All in One](https://www.jaegertracing.io/docs/1.33/getting-started/#all-in-one) for tracing using the [Fastify OpenTelemetry](https://github.com/autotelic/fastify-opentelemetry) plugin
+
+[Loki logging in Node.js using Fastify and Pino](https://skaug.dev/node-js-app-with-loki/)

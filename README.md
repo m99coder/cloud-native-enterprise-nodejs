@@ -170,23 +170,11 @@ Based on these numbers the application – run locally on my specific machine �
 
 ## Observability
 
-> This [Docker image](https://github.com/spujadas/elk-docker) provides a convenient centralised log server and log management web interface, by packaging Elasticsearch, Logstash, and Kibana, collectively known as ELK.
-
-- Elasticsearch: Database (Port 9200, TCP)
-- Logstash: Log ingestion (Port 7777, UDP)
-- Kibana: Dashboard (Port 5601, TCP)
-
-```shell
-docker run --rm -it \
-  -p 5601:5601 \
-  -p 9200:9200 \
-  -p 5044:5044 \
-  -p 7777:7777/udp \
-  -v $(pwd)/elk/udp.conf:/etc/logstash/conf.d/99-input-udp.conf \
-  -e MAX_MAP_COUNT=262144 \
-  --name elk sebp/elk:oss-8.1.0
-```
-
 [OpenTelemetry – Grafana Demo](https://github.com/connorlindsey/otel-grafana-demo)
 
 > Demo application showing how to instrument a Node application with OpenTelemetry, Prometheus, Jaeger, Loki, and Grafana. Built with Next.js, Fastify, and Postgres.
+
+- Promtail for scraping local log files and sending them to Loki
+- Loki for log ingestion
+- Grafana for log visualization
+- Jaeger [All in One](https://www.jaegertracing.io/docs/1.33/getting-started/#all-in-one) for tracing using the [Fastify OpenTelemetry](https://github.com/autotelic/fastify-opentelemetry) plugin

@@ -6,7 +6,7 @@ import build from './app'
 
 // CONFIGURATION –––
 
-// read port from environment variables
+// read from environment variables
 dotenv.config()
 
 type ServerConfig = {

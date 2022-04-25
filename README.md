@@ -125,57 +125,6 @@ HAProxy can also be configured to close connections as soon as a maximum number 
 
 In order to load test one instance of the application, we stop HAProxy and start the instance without piping to `pino-pretty`.
 
-> [AutoCannon](https://github.com/mcollina/autocannon#readme), is an HTTP/1.1 benchmarking tool written in Node.js, greatly inspired by [wrk](https://github.com/wg/wrk) and [wrk2](https://github.com/giltene/wrk2), with support for HTTP pipelining and HTTPS.
-
-```shell
-npm i -g autocannon
-```
-
-```shell
-$ autocannon -d 60 -c 10 -l http://localhost:3003
-Running 60s test @ http://localhost:3003/
-10 connections
-
-
-┌─────────┬──────┬──────┬───────┬──────┬─────────┬─────────┬───────┐
-│ Stat    │ 2.5% │ 50%  │ 97.5% │ 99%  │ Avg     │ Stdev   │ Max   │
-├─────────┼──────┼──────┼───────┼──────┼─────────┼─────────┼───────┤
-│ Latency │ 0 ms │ 0 ms │ 3 ms  │ 5 ms │ 0.72 ms │ 1.08 ms │ 45 ms │
-└─────────┴──────┴──────┴───────┴──────┴─────────┴─────────┴───────┘
-┌───────────┬────────┬─────────┬─────────┬─────────┬─────────┬─────────┬────────┐
-│ Stat      │ 1%     │ 2.5%    │ 50%     │ 97.5%   │ Avg     │ Stdev   │ Min    │
-├───────────┼────────┼─────────┼─────────┼─────────┼─────────┼─────────┼────────┤
-│ Req/Sec   │ 5255   │ 6863    │ 7747    │ 8399    │ 7765.04 │ 501.98  │ 5254   │
-├───────────┼────────┼─────────┼─────────┼─────────┼─────────┼─────────┼────────┤
-│ Bytes/Sec │ 956 kB │ 1.25 MB │ 1.41 MB │ 1.53 MB │ 1.41 MB │ 91.3 kB │ 956 kB │
-└───────────┴────────┴─────────┴─────────┴─────────┴─────────┴─────────┴────────┘
-
-Req/Bytes counts sampled once per second.
-# of samples: 60
-
-┌────────────┬──────────────┐
-│ Percentile │ Latency (ms) │
-├────────────┼──────────────┤
-│ 75         │ 1            │
-├────────────┼──────────────┤
-│ 90         │ 2            │
-├────────────┼──────────────┤
-│ 97.5       │ 3            │
-├────────────┼──────────────┤
-│ 99         │ 5            │
-├────────────┼──────────────┤
-│ 99.9       │ 8            │
-├────────────┼──────────────┤
-│ 99.99      │ 15           │
-├────────────┼──────────────┤
-│ 99.999     │ 36           │
-└────────────┴──────────────┘
-
-466k requests in 60.02s, 84.8 MB read
-```
-
-Based on these numbers the application reaches a throughput of ~5,000 requests/s when run locally on my specific machine. TP99 (top percentile 99) is ~5 ms, while TP99.999 is ~36 ms.
-
 > [wrk](https://github.com/wg/wrk) is a modern HTTP benchmarking tool capable of generating significant load when run on a single multi-core CPU.
 
 ```shell
@@ -183,29 +132,41 @@ brew install wrk
 ```
 
 ```shell
-$ wrk -c10 -d60s http://localhost:3003
-Running 1m test @ http://localhost:3003
+$ wrk -c10 -d60s --latency http://localhost:3001/health
+Running 1m test @ http://localhost:3001/health
   2 threads and 10 connections
   Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency     1.39ms    1.43ms  50.17ms   92.33%
-    Req/Sec     4.13k   456.51     4.87k    89.17%
-  493651 requests in 1.00m, 85.68MB read
-Requests/sec:   8222.58
-Transfer/sec:      1.43MB
+    Latency   752.68us    0.85ms  33.52ms   93.70%
+    Req/Sec     7.73k     0.94k    9.52k    74.42%
+  Latency Distribution
+     50%  430.00us
+     75%    0.93ms
+     90%    1.32ms
+     99%    3.45ms
+  923474 requests in 1.00m, 108.33MB read
+Requests/sec:  15388.55
+Transfer/sec:      1.81MB
 ```
 
 ```shell
 $ haproxy -f ./haproxy/passthrough.cfg
-$ wrk -c10 -d60s http://localhost:3000
-Running 1m test @ http://localhost:3000
+$ wrk -c10 -d60s --latency http://localhost:3000/health
+Running 1m test @ http://localhost:3000/health
   2 threads and 10 connections
   Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency     2.01ms    2.67ms  79.01ms   85.40%
-    Req/Sec     4.51k   579.69     6.26k    74.50%
-  538540 requests in 1.00m, 93.47MB read
-Requests/sec:   8972.15
-Transfer/sec:      1.56MB
+    Latency     0.90ms    1.54ms  49.85ms   90.55%
+    Req/Sec    10.08k     2.29k   13.40k    66.08%
+  Latency Distribution
+     50%  347.00us
+     75%  689.00us
+     90%    2.33ms
+     99%    6.89ms
+  1203917 requests in 1.00m, 141.22MB read
+Requests/sec:  20062.58
+Transfer/sec:      2.35MB
 ```
+
+Based on these numbers the application – run locally on my specific machine – reaches a throughput of ~15,000 requests/s and a TP99 (top percentile 99%) for latency of ~4 ms, when testing only one instance. Using HAProxy with a passthrough configuration reaches a throughput of ~20,000 requests/s and a TP99 for latency is ~7 ms.
 
 ## Observability
 

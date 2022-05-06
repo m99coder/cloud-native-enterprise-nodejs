@@ -214,7 +214,7 @@ Attempting to send log to Loki failed with status '400: Bad Request' returned re
 total ignored: 1 out of 1
 ```
 
-Maybe it’s better to use [pino-tee](https://github.com/pinojs/pino-tee) and configure [Promtail](https://grafana.com/docs/loki/latest/clients/promtail/) to pick the logs up from there.
+Maybe it’s better to use [pino-tee](https://github.com/pinojs/pino-tee) and configure [Promtail](https://grafana.com/docs/loki/latest/clients/promtail/) to pick up the logs from there. Find a configuration for Promtail [here](https://github.com/connorlindsey/otel-grafana-demo/blob/main/config/promtail/promtail-config.yaml) and the respective configuration for Docker Compose [here](https://github.com/connorlindsey/otel-grafana-demo/blob/main/docker-compose.yml#L63-L71).
 
 ### Resources
 

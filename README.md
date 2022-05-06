@@ -179,4 +179,34 @@ Based on these numbers the application â€“ run locally on my specific machine â€
 - Grafana for log visualization
 - Jaeger [All in One](https://www.jaegertracing.io/docs/1.33/getting-started/#all-in-one) for tracing using the [Fastify OpenTelemetry](https://github.com/autotelic/fastify-opentelemetry) plugin
 
-[Loki logging in Node.js using Fastify and Pino](https://skaug.dev/node-js-app-with-loki/)
+Resources
+
+- [Install Grafana Loki with Docker or Docker Compose](https://grafana.com/docs/loki/latest/installation/docker/)
+- [Loki logging in Node.js using Fastify and Pino](https://skaug.dev/node-js-app-with-loki/)
+
+Loki
+
+```shell
+# get local configuration file
+wget https://raw.githubusercontent.com/grafana/loki/v2.5.0/cmd/loki/loki-local-config.yaml -O ./loki/loki-config.yaml
+
+# start server
+docker run --rm \
+  -v $(pwd)/loki:/mnt/config \
+  --name loki \
+  -p 3100:3100 grafana/loki:2.5.0 -config.file=/mnt/config/loki-config.yaml
+```
+
+Promtail
+
+```shell
+# get local configuration file
+wget https://raw.githubusercontent.com/grafana/loki/v2.5.0/clients/cmd/promtail/promtail-docker-config.yaml -O ./loki/promtail-config.yaml
+
+# start server
+docker run --rm \
+  -v $(pwd)/loki:/mnt/config \
+  --name promtail \
+  --link loki \
+  grafana/promtail:2.5.0 -config.file=/mnt/config/promtail-config.yaml
+```

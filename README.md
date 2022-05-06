@@ -197,6 +197,20 @@ In [Grafana](http://localhost:3000/explore?orgId=1&left=%5B%22now-1h%22,%22now%2
 
 Drop down any log line of the result and click the “Tempo” link to jump directly from logs to traces.
 
+```shell
+npm install -g pino-loki@^1
+npm start | pino-loki --hostname=http://localhost:3100
+```
+
+You can see the application logs in [Grafana](http://localhost:3000/explore?orgId=1&left=%5B%22now-1h%22,%22now%22,%22Loki%22,%7B%22expr%22:%22%7Bapplication%3D%5C%22App%5C%22%7D%22%7D%5D).
+
+*TODO:* Figure out why the we get this error:
+
+```text
+Attempting to send log to Loki failed with status '400: Bad Request' returned reason: entry with timestamp 2022-05-06 15:01:00.566 +0000 UTC ignored, reason: 'entry out of order' for stream: {application="App", level="info"},
+total ignored: 1 out of 1
+```
+
 ### Resources
 
 - [Run Grafana Docker image](https://grafana.com/docs/grafana/latest/installation/docker/)

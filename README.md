@@ -170,43 +170,34 @@ Based on these numbers the application – run locally on my specific machine �
 
 ## Observability
 
-[OpenTelemetry – Grafana Demo](https://github.com/connorlindsey/otel-grafana-demo)
+The [Three Pillars of observability](https://grafana.com/blog/2019/10/21/whats-next-for-observability/) are metrics, logs, and traces.
 
-> Demo application showing how to instrument a Node application with OpenTelemetry, Prometheus, Jaeger, Loki, and Grafana. Built with Next.js, Fastify, and Postgres.
+- Metrics: [Prometheus](https://grafana.com/oss/prometheus/), [Grafana Mimir](https://grafana.com/oss/mimir/) for multi-tenant, long-term storage for Prometheus
+- Logs: [Grafana Loki](https://grafana.com/oss/loki/)
+- Traces: [Grafana Tempo](https://grafana.com/oss/tempo/)
 
-- Promtail for scraping local log files and sending them to Loki
-- Loki for log ingestion
-- Grafana for log visualization
-- Jaeger [All in One](https://www.jaegertracing.io/docs/1.33/getting-started/#all-in-one) for tracing using the [Fastify OpenTelemetry](https://github.com/autotelic/fastify-opentelemetry) plugin
+```shell
+# install plugin to allow applications to ship their logs to Loki
+docker plugin install grafana/loki-docker-driver:latest --alias loki --grant-all-permissions
 
-Resources
+# start observability stack
+docker compose up
 
+# open Grafana for Loki
+open http://localhost:3000/explore?orgId=1&left=%5B%22now-1h%22,%22now%22,%22Loki%22,%7B%7D%5D
+```
+
+```promql
+{container_name="observability_loki_1"} |= "traceID"
+```
+
+Drop down any log line of the result and click the “Tempo” link to jump directly from logs to traces.
+
+### Resources
+
+- [Run Grafana Docker image](https://grafana.com/docs/grafana/latest/installation/docker/)
 - [Install Grafana Loki with Docker or Docker Compose](https://grafana.com/docs/loki/latest/installation/docker/)
+- Grafana Tempo: [Documentation](https://grafana.com/docs/tempo/latest/), [Loki example](https://github.com/grafana/tempo/tree/main/example/docker-compose/loki)
+- [A simple Loki setup with Grafana](https://github.com/livingdocsIO/monitoring)
 - [Loki logging in Node.js using Fastify and Pino](https://skaug.dev/node-js-app-with-loki/)
-
-Loki
-
-```shell
-# get local configuration file
-wget https://raw.githubusercontent.com/grafana/loki/v2.5.0/cmd/loki/loki-local-config.yaml -O ./loki/loki-config.yaml
-
-# start server
-docker run --rm \
-  -v $(pwd)/loki:/mnt/config \
-  --name loki \
-  -p 3100:3100 grafana/loki:2.5.0 -config.file=/mnt/config/loki-config.yaml
-```
-
-Promtail
-
-```shell
-# get local configuration file
-wget https://raw.githubusercontent.com/grafana/loki/v2.5.0/clients/cmd/promtail/promtail-docker-config.yaml -O ./loki/promtail-config.yaml
-
-# start server
-docker run --rm \
-  -v $(pwd)/loki:/mnt/config \
-  --name promtail \
-  --link loki \
-  grafana/promtail:2.5.0 -config.file=/mnt/config/promtail-config.yaml
-```
+- [OpenTelemetry – Grafana Demo](https://github.com/connorlindsey/otel-grafana-demo)

@@ -181,11 +181,15 @@ The [Three Pillars of observability](https://grafana.com/blog/2019/10/21/whats-n
 docker plugin install grafana/loki-docker-driver:latest --alias loki --grant-all-permissions
 
 # start observability stack
-docker compose up
+docker compose up -d
 
-# open Grafana for Loki
-open http://localhost:3000/explore?orgId=1&left=%5B%22now-1h%22,%22now%22,%22Loki%22,%7B%7D%5D
+# stop observability stack
+docker compose down
+# stop observability stack and remove volumes
+docker compose down -v
 ```
+
+In [Grafana](http://localhost:3000/explore?orgId=1&left=%5B%22now-1h%22,%22now%22,%22Loki%22,%7B%22expr%22:%22%7Bcontainer_name%3D%5C%22observability-loki-1%5C%22%7D%20%7C%3D%20%5C%22traceID%5C%22%22%7D%5D) we can query for logs from the Loki container that contain a `traceID` using this query:
 
 ```promql
 {container_name="observability_loki_1"} |= "traceID"

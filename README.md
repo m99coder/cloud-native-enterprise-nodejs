@@ -214,10 +214,13 @@ Attempting to send log to Loki failed with status '400: Bad Request' returned re
 total ignored: 1 out of 1
 ```
 
+Maybe it’s better to use [pino-tee](https://github.com/pinojs/pino-tee) and configure [Promtail](https://grafana.com/docs/loki/latest/clients/promtail/) to pick the logs up from there.
+
 ### Resources
 
 - [Run Grafana Docker image](https://grafana.com/docs/grafana/latest/installation/docker/)
 - [Install Grafana Loki with Docker or Docker Compose](https://grafana.com/docs/loki/latest/installation/docker/)
+- Getting started with Grafana Loki: [Guide](https://grafana.com/docs/loki/latest/getting-started/), [Code](https://github.com/grafana/loki/tree/main/examples/getting-started), [Scraping](https://grafana.com/docs/loki/latest/clients/promtail/scraping/#file-target-discovery)
 - Grafana Tempo: [Documentation](https://grafana.com/docs/tempo/latest/), [Loki example](https://github.com/grafana/tempo/tree/main/example/docker-compose/loki)
 - [A simple Loki setup with Grafana](https://github.com/livingdocsIO/monitoring)
 - [Loki logging in Node.js using Fastify and Pino](https://skaug.dev/node-js-app-with-loki/)

@@ -16,7 +16,7 @@ type ServerConfig = {
 
 const effectiveConfig: ServerConfig = {
   logLevel: process.env.LOG_LEVEL || 'info',
-  port: parseInt(process.env.PORT, 10) || 3000,
+  port: parseInt(process.env.PORT, 10) || 4000,
 }
 
 // SERVER –––

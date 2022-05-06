@@ -78,7 +78,7 @@ Environment variables
 | Variable    | Type     | Default |
 | ----------- | -------- | ------- |
 | `LOG_LEVEL` | `string` | `info`  |
-| `PORT`      | `number` | 3000    |
+| `PORT`      | `number` | 4000    |
 
 ## Scaling
 
@@ -88,9 +88,9 @@ Environment variables
 
 ```shell
 # start 3 server instances
-PORT=3001 npm start
-PORT=3002 npm start
-PORT=3003 npm start
+PORT=4001 npm start
+PORT=4002 npm start
+PORT=4003 npm start
 ```
 
 ```shell
@@ -101,10 +101,10 @@ haproxy -f ./haproxy/haproxy.cfg
 
 ```shell
 # open the stats dashboard
-open http://localhost:3000/admin/stats
+open http://localhost:4000/admin/stats
 
 # call the API
-curl -i http://localhost:3000
+curl -i http://localhost:4000
 
 # terminate one of the API servers with `kill <pid>`
 # HAProxy detects that the API is down
@@ -116,7 +116,7 @@ By default a health check is performed on Layer 4 (TCP). If `haproxy.cfg` define
 In order to use gzip compression, you need to provide the respective header. The HAProxy configuration file defines the compression to be available for content types `application/json` and `text/plain`.
 
 ```shell
-curl -s http://localhost:3000/ -H "Accept-Encoding: gzip" | gunzip
+curl -s http://localhost:4000/ -H "Accept-Encoding: gzip" | gunzip
 ```
 
 HAProxy can also be configured to close connections as soon as a maximum number of connections is reached to avoid back pressure.
@@ -132,8 +132,8 @@ brew install wrk
 ```
 
 ```shell
-$ wrk -c10 -d60s --latency http://localhost:3001/health
-Running 1m test @ http://localhost:3001/health
+$ wrk -c10 -d60s --latency http://localhost:4001/health
+Running 1m test @ http://localhost:4001/health
   2 threads and 10 connections
   Thread Stats   Avg      Stdev     Max   +/- Stdev
     Latency   752.68us    0.85ms  33.52ms   93.70%
@@ -150,8 +150,8 @@ Transfer/sec:      1.81MB
 
 ```shell
 $ haproxy -f ./haproxy/passthrough.cfg
-$ wrk -c10 -d60s --latency http://localhost:3000/health
-Running 1m test @ http://localhost:3000/health
+$ wrk -c10 -d60s --latency http://localhost:4000/health
+Running 1m test @ http://localhost:4000/health
   2 threads and 10 connections
   Thread Stats   Avg      Stdev     Max   +/- Stdev
     Latency     0.90ms    1.54ms  49.85ms   90.55%
@@ -181,40 +181,28 @@ The [Three Pillars of observability](https://grafana.com/blog/2019/10/21/whats-n
 docker plugin install grafana/loki-docker-driver:latest --alias loki --grant-all-permissions
 
 # start observability stack
-docker compose -f ./observability/docker-compose.yaml \
-  up -d
+docker compose up -d
 
 # stop observability stack
-docker compose -f ./observability/docker-compose.yaml \
-  down
+docker compose down
 # stop observability stack and remove volumes
-docker compose -f ./observability/docker-compose.yaml \
-  down -v
+docker compose down -v
 ```
 
-In [Grafana](http://localhost:3000/explore?orgId=1&left=%5B%22now-1h%22,%22now%22,%22Loki%22,%7B%22expr%22:%22%7Bcontainer_name%3D%5C%22observability-loki-1%5C%22%7D%20%7C%3D%20%5C%22traceID%5C%22%22%7D%5D) we can query for logs from the Loki container that contain a `traceID` using this query:
+In [Grafana](http://localhost:3000/explore?orgId=1&left=%5B%22now-30m%22,%22now%22,%22Loki%22,%7B%22expr%22:%22%7Bcontainer_name%3D%5C%22m99coder-loki%5C%22%7D%20%7C%3D%20%5C%22traceID%5C%22%22%7D%5D) we can query for logs from the Loki container that contain a `traceID` using this query:
 
 ```promql
-{container_name="observability_loki_1"} |= "traceID"
+{container_name="m99coder-loki"} |= "traceID"
 ```
 
 Drop down any log line of the result and click the “Tempo” link to jump directly from logs to traces.
 
 ```shell
-npm install -g pino-loki@^1
-PORT=4000 npm start | pino-loki --hostname=http://localhost:3100
+npm i pino-tee -g
+npm start | pino-tee info ./logs/api.info.log | tee -a ./logs/api.log
 ```
 
-You can see the application logs in [Grafana](http://localhost:3000/explore?orgId=1&left=%5B%22now-1h%22,%22now%22,%22Loki%22,%7B%22expr%22:%22%7Bapplication%3D%5C%22App%5C%22%7D%22%7D%5D).
-
-*TODO:* Figure out why the we get this error:
-
-```text
-Attempting to send log to Loki failed with status '400: Bad Request' returned reason: entry with timestamp 2022-05-06 15:01:00.566 +0000 UTC ignored, reason: 'entry out of order' for stream: {application="App", level="info"},
-total ignored: 1 out of 1
-```
-
-Maybe it’s better to use [pino-tee](https://github.com/pinojs/pino-tee) and configure [Promtail](https://grafana.com/docs/loki/latest/clients/promtail/) to pick up the logs from there. Find a configuration for Promtail [here](https://github.com/connorlindsey/otel-grafana-demo/blob/main/config/promtail/promtail-config.yaml) and the respective configuration for Docker Compose [here](https://github.com/connorlindsey/otel-grafana-demo/blob/main/docker-compose.yml#L63-L71).
+You can see the application logs in [Grafana](http://localhost:3000/explore?orgId=1&left=%5B%22now-30m%22,%22now%22,%22Loki%22,%7B%22expr%22:%22%7Bjob%3D%5C%22logs-api%5C%22,filename%3D%5C%22%2Fusr%2Fapi%2Fdata%2Fapi.info.log%5C%22%7D%22%7D%5D).
 
 ### Resources
 

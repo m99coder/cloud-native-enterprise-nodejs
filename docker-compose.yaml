@@ -3,10 +3,11 @@ services:
 
   tempo:
     image: grafana/tempo:latest
+    container_name: m99coder-tempo
     command: [ "-config.file=/etc/tempo.yaml" ]
     volumes:
-      - ./tempo-local.yaml:/etc/tempo.yaml
-      - ./tempo-data:/tmp/tempo
+      - ./observability/tempo.yaml:/etc/tempo.yaml
+      - ./observability/data:/tmp/tempo
     ports:
       # Jaeger ingest
       - "14268"
@@ -17,6 +18,7 @@ services:
 
   loki:
     image: grafana/loki:2.3.0
+    container_name: m99coder-loki
     command: [ "-config.file=/etc/loki/local-config.yaml" ]
     ports:
       # Loki needs to be exposed so it receives logs
@@ -32,11 +34,24 @@ services:
       options:
         loki-url: "http://localhost:3100/loki/api/v1/push"
 
+  promtail:
+    image: grafana/promtail:latest
+    container_name: m99coder-promtail
+    volumes:
+      - ./observability/promtail.yaml:/etc/promtail/promtail-config.yaml
+      - ./logs:/usr/api/data/
+    command: -config.file=/etc/promtail/promtail-config.yaml
+    logging:
+      driver: loki
+      options:
+        loki-url: "http://localhost:3100/loki/api/v1/push"
+
   prometheus:
     image: prom/prometheus:latest
+    container_name: m99coder-prometheus
     command: [ "--config.file=/etc/prometheus.yaml" ]
     volumes:
-      - ./prometheus.yaml:/etc/prometheus.yaml
+      - ./observability/prometheus.yaml:/etc/prometheus.yaml
     ports:
       - "9090:9090"
     logging:
@@ -46,8 +61,9 @@ services:
 
   grafana:
     image: grafana/grafana:8.1.6
+    container_name: m99coder-grafana
     volumes:
-      - ./grafana-datasources.yaml:/etc/grafana/provisioning/datasources/datasources.yaml
+      - ./observability/grafana-datasources.yaml:/etc/grafana/provisioning/datasources/datasources.yaml
     environment:
       - GF_AUTH_ANONYMOUS_ENABLED=true
       - GF_AUTH_ANONYMOUS_ORG_ROLE=Admin

@@ -204,6 +204,8 @@ npm start | pino-tee info ./logs/api.info.log | tee -a ./logs/api.log
 
 You can see the application logs in [Grafana](http://localhost:3000/explore?orgId=1&left=%5B%22now-30m%22,%22now%22,%22Loki%22,%7B%22expr%22:%22%7Bjob%3D%5C%22logs-api%5C%22,filename%3D%5C%22%2Fusr%2Fapi%2Fdata%2Fapi.info.log%5C%22%7D%22%7D%5D).
 
+*Note*: So far the log files are not kept in sync between the host and the container, which results in no updates in Grafana.
+
 ### Resources
 
 - [Run Grafana Docker image](https://grafana.com/docs/grafana/latest/installation/docker/)

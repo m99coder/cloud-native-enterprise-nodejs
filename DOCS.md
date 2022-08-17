@@ -1,4 +1,4 @@
-# Cloud Native Node.js
+# Cloud-native Enterprise Node.js
 
 ## Build a 12-Factor Node.js App with Docker
 

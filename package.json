@@ -1,18 +1,32 @@
 {
-  "name": "typescript-vscode",
-  "version": "0.1.0",
-  "description": "TypeScript in Visual Studio Code",
+  "name": "cloud-native-enterprise-nodejs",
+  "version": "0.2.0",
+  "description": "Cloud-native Enterprise Node.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/m99coder/typescript-vscode.git"
+    "url": "git+https://github.com/m99coder/cloud-native-enterprise-nodejs.git"
   },
-  "keywords": [],
+  "keywords": [
+    "eslint",
+    "fastify",
+    "grafana",
+    "jest",
+    "loki",
+    "observability",
+    "pino",
+    "prettier",
+    "prometheus",
+    "promtail",
+    "tempo",
+    "ts-node-dev",
+    "typescript"
+  ],
   "author": "Marco Lehmann <m99@posteo.de>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/m99coder/typescript-vscode/issues"
+    "url": "https://github.com/m99coder/cloud-native-enterprise-nodejs/issues"
   },
-  "homepage": "https://github.com/m99coder/typescript-vscode#readme",
+  "homepage": "https://github.com/m99coder/cloud-native-enterprise-nodejs#readme",
   "devDependencies": {
     "@types/jest": "^28.1.7",
     "@types/node": "^18.7.6",

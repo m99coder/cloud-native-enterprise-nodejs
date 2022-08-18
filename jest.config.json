@@ -1,5 +1,6 @@
 {
   "preset": "ts-jest",
+  "reporters": ["default", "github-actions"],
   "testEnvironment": "node",
   "testPathIgnorePatterns": ["/node_modules/", "out"]
 }

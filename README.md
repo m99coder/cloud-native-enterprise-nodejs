@@ -1,5 +1,7 @@
 # Cloud-native Enterprise Node.js
 
+[![Node.js](https://github.com/m99coder/cloud-native-enterprise-nodejs/actions/workflows/node.js.yaml/badge.svg)](https://github.com/m99coder/cloud-native-enterprise-nodejs/actions/workflows/node.js.yaml)
+
 ## Configuration
 
 Some formatting settings like format on save using the [ESLint plugin](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) for VSCode:

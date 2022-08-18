@@ -13,6 +13,6 @@ test('health check route', async () => {
   const res = await app.inject({
     url: '/health',
   })
-  expect(res.statusCode).toEqual(204)
+  expect(res.statusCode).toEqual(200)
   expect(res.body).toEqual('')
 })

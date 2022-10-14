@@ -1,5 +1,5 @@
-# Based on: https://blog.somewhatabstract.com/2021/10/11/setting-up-dependabot-with-github-actions-to-approve-and-merge/
-name: Dependabot Pull Request Approve and Merge
+# Based on: https://github.com/dependabot/fetch-metadata
+name: Dependabot
 on: pull_request
 
 permissions:
@@ -16,7 +16,8 @@ jobs:
       - name: Dependabot metadata
         id: dependabot-metadata
         uses: dependabot/fetch-metadata@v1
-      - uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
       - name: Approve a PR if not already approved
         run: |
           gh pr checkout "$PR_URL" # sets the upstream metadata for `gh pr status`
@@ -25,7 +26,7 @@ jobs:
           else echo "PR already approved, skipping additional approvals to minimize emails/notification noise.";
           fi
         env:
-          PR_URL: ${{github.event.pull_request.html_url}}
+          PR_URL: ${{ github.event.pull_request.html_url }}
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
       - name: Enable auto-merge for Dependabot PRs
         if: ${{ steps.dependabot-metadata.outputs.update-type != 'version-update:semver-major' }}

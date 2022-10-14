@@ -1,6 +1,6 @@
 # Cloud-native Enterprise Node.js
 
-[![Node.js](https://github.com/m99coder/cloud-native-enterprise-nodejs/actions/workflows/build-and-test/badge.svg)](https://github.com/m99coder/cloud-native-enterprise-nodejs/actions/workflows/build-and-test.yml)
+[![Build and Test](https://github.com/m99coder/cloud-native-enterprise-nodejs/actions/workflows/build-and-test.yml/badge.svg)](https://github.com/m99coder/cloud-native-enterprise-nodejs/actions/workflows/build-and-test.yml)
 
 ## Configuration
 

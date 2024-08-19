@@ -56,7 +56,7 @@
   },
   "dependencies": {
     "dotenv": "^16.3.1",
-    "fastify": "^4.19.2",
+    "fastify": "^4.28.1",
     "uuid": "^10.0.0"
   }
 }

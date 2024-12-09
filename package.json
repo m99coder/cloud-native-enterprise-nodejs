@@ -55,7 +55,7 @@
     "test:dev": "jest --watchAll"
   },
   "dependencies": {
-    "dotenv": "^16.4.5",
+    "dotenv": "^16.4.7",
     "fastify": "^4.28.1",
     "uuid": "^11.0.3"
   }

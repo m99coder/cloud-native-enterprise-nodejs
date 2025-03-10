@@ -29,7 +29,7 @@
   "homepage": "https://github.com/m99coder/cloud-native-enterprise-nodejs#readme",
   "devDependencies": {
     "@types/jest": "^29.5.14",
-    "@types/node": "^22.13.8",
+    "@types/node": "^22.13.10",
     "@types/uuid": "^10.0.0",
     "@typescript-eslint/eslint-plugin": "^8.26.0",
     "@typescript-eslint/parser": "^8.25.0",

@@ -12,3 +12,6 @@ updates:
     commit-message:
       prefix: "build"
       include: "scope"
+    ignore:
+      - dependency-name: "jest"
+        versions: [">=30.0.0"]

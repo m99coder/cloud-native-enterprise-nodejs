@@ -1,5 +1,8 @@
 # Cloud-native Enterprise Node.js
 
+> [!NOTE]
+> This is the predecessor of [this project](https://github.com/m99coder/cloud-native-enterprise-nodejs-revamped). Hop over and have a look. It comes with TypeScript, ESM, tsdown Rust bundler, and c8 native V8 code coverage beyond other cutting-edge tools and approaches.
+
 [![Build and Test](https://github.com/m99coder/cloud-native-enterprise-nodejs/actions/workflows/build-and-test.yml/badge.svg)](https://github.com/m99coder/cloud-native-enterprise-nodejs/actions/workflows/build-and-test.yml)
 
 ## Configuration
